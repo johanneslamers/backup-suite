@@ -26,7 +26,7 @@ aws configure
 ````
 
 ## Setup backup location and credentials
-Then we can the backup folder and the environment file that holds our credentials.
+Now we create the backup folder and the environment file that holds our credentials.
 
 ````
 mkdir ~/backup
