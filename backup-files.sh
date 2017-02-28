@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-# Warning: without leading '/' -> home/forge/default/public/static/
-BACKUP_DIR="home/forge/default/public/static/"
-
 WEEK=`date +%V`
 DATE=`date +%Y%m%d%H%M`
+
+# Get all enviroment cridentials
+source /home/forge/backup/.env
 
 echo "Backing up files..."
 
