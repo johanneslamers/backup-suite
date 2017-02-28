@@ -34,7 +34,7 @@ cd ~/backup
 vim .env
 ````
 
-## Setup backup shell scripts
+## Setup backup scripts
 Then we can create our backup shell scripts.
 - backup-db.sh: This will export the database, compress it, and upload it to our S3 bucket.
 - backup-files.sh: This will export the files, tarball's it, and upload it to our S3 bucket.
