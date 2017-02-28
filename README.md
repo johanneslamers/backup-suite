@@ -33,7 +33,9 @@ mkdir ~/backup
 cd ~/backup
 vim .env
 ````
-Paste your .env credentials and close vim with ``ESC`` followed by ``:wq``
+Don’t forget to add your credentials in the appropriate variables, as well as to modify the paths based on your server and AWS setup. 
+
+Now paste the .env credentials and close vim with ``ESC`` followed by ``:wq``
 
 ## Setup backup scripts
 Then we can create our backup shell scripts.
