@@ -17,7 +17,7 @@ mysqldump -u ${MYSQL_USER} -p${MYSQL_PASSWORD} ${MYSQL_DATABASE} | gzip > ${SAVE
 if [ -e ${SAVE_DIR}/${BACKUP_NAME}-${DATE}.sql.gz ]; then
 
     # Upload to AWS
-    aws s3 cp ${SAVE_DIR}/${BACKUP_NAME}-${DATE}.sql.gz s3://${S3_BUCKET}/${CLIENT}/${WEEK}/${BACKUP_NAME}-${DATE}.sql.gz
+    aws s3 cp ${SAVE_DIR}/${BACKUP_NAME}-${DATE}.sql.gz s3://${S3_BUCKET}/${CLIENT}/${WEEK}/db/${BACKUP_NAME}-${DATE}.sql.gz
 
     # Test result of last command run
     if [ "$?" -ne "0" ]; then
