@@ -26,7 +26,7 @@ aws configure
 ````
 
 ## Setup backup location
-Then we can the backup folder and the .env file to hold our MySQL database credentials.
+Then we can the backup folder and the environment file that holds our MySQL database credentials.
 
 ````
 mkdir ~/backup
@@ -42,6 +42,15 @@ Then we can create our backup shell scripts.
 ````
 vim backup-db.sh
 vim backup-files.sh
+````
+
+Make the scripts executable with chmod and test it.
+
+````
+chmod +x backup-db.sh
+chmod +x backup-files.sh
+bash backup-db.sh
+bash backup-files.sh
 ````
 
 ## Add crontask in Laravel Forge
