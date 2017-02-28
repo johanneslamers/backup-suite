@@ -45,6 +45,7 @@ vim backup-db.sh
 vim backup-files.sh
 ````
 Paste your scripts and close vim with ``ESC`` followed by ``:wq``
+
 Make the scripts executable with chmod and test it.
 
 ````
