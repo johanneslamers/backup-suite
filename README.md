@@ -4,7 +4,7 @@ Laravel Forge Backup Suite
 Based on https://serversforhackers.com/video/backup-to-s3
 
 ## Install AWS CLI
-we'll install the AWS CLI tool using Python PIP, a Python package manager.
+We'll install the AWS CLI tool using Python PIP, a Python package manager.
 
 ````
 # Install Pip
