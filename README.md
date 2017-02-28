@@ -67,12 +67,9 @@ Add these commands to the scheduled job. And run as forge user.
 /usr/bin/env bash /home/forge/backup/backup-files.sh &>> /home/forge/backup/backup-files.log
 ````
 
-## Cleanup S3 Backups
+## Tip: Cleanup S3 Backups
 
-Chances are you will not want to keep your backups forever. On the local server we have already set a removal date for the old backups. On S3 we need to do the same.
+Within S3 locate your bucket properties and find the “Lifecycle” option. Then just create a rule and you can delete old backups any number of days after they were created. I created a rule called “Delete Old Backups” that runs on the whole bucket and permanently deletes items created 30 days ago.
 
-Within S3 locate your bucket properties and find the “Lifecycle” option. Then just create a rule and you can delete old backups any number of days after they were created.
 
-Here I created a rule called “Delete Old Backups” that runs on the whole bucket and permanently deletes items created 30 days ago.
-
-> Based on https://serversforhackers.com/video/backup-to-s3
+Based on https://serversforhackers.com/video/backup-to-s3
