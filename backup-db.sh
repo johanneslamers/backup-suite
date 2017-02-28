@@ -6,6 +6,8 @@ DATE=`date +%Y%m%d%H%M`
 # Get all enviroment cridentials
 source /home/forge/backup/.env
 
+echo "Backing up files..."
+
 mysqldump -u ${MYSQL_USER} -p${MYSQL_PASSWORD} ${MYSQL_DATABASE} | gzip > ${SAVE_DIR}/${BACKUP_NAME}-db-${DATE}.sql.gz
 
 if [ -e ${SAVE_DIR}/${BACKUP_NAME}-${DATE}.sql.gz ]; then
