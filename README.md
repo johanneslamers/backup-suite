@@ -4,6 +4,7 @@ Laravel Forge Backup Suite
 
 
 ## Install AWS CLI
+SSH into your server. 
 We'll install the AWS CLI tool using Python PIP, a Python package manager.
 
 ````
