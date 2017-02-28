@@ -1,7 +1,7 @@
-Laravel Forge Backup Suite
+Backup Suite to AWS S3
 =========
 
-
+Backup important data, such as database and file dumps, securely to S3, than deletes the local backups for security reasons.
 
 ## Install AWS CLI
 SSH into your server. 
