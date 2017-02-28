@@ -9,7 +9,7 @@ DATE=`date +%Y%m%d%H%M`
 SAVE_DIR="/home/forge/backup"
 S3_BUCKET="madebyjohannes-client-backup"
 
-# Get MYSQL_USER and MYSQL_PASSWORD
+# Get MYSQL_USER MYSQL_PASSWORD and MYSQL_DATABASE
 source /home/forge/backup/.env
 
 mysqldump -u ${MYSQL_USER} -p${MYSQL_PASSWORD} ${MYSQL_DATABASE} | gzip > ${SAVE_DIR}/${BACKUP_NAME}.sql.gz
