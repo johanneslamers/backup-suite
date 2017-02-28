@@ -3,8 +3,8 @@
 CLIENT="XXX"
 BACKUP_NAME="XXX-SITE"
 
-# Warning: without leading '/' -> home/forge/default/
-BACKUP_DIR="home/forge/default/public/build/css/"
+# Warning: without leading '/' -> home/forge/default/public/static/
+BACKUP_DIR="home/forge/default/public/static/"
 
 WEEK=`date +%V`
 DATE=`date +%Y%m%d%H%M`
