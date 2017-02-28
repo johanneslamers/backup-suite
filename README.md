@@ -11,13 +11,13 @@ We'll install the AWS CLI tool using Python PIP, a Python package manager.
 # Install Pip
 sudo apt-get install -y python-pip
 
-# Install AWS CLI tol globally
+# Install AWS CLI tool globally
 sudo pip install awscli
 
 # Check to ensure it exists
 which aws
 
-# Configure AWS - adding the id, key, default zone and default output format
+# Configure AWS - adding the KEY, SECRET KEY, default zone and default output format
 aws configure
 > YOUR KEY HERE
 > YOUR SECRET KEY HERE
