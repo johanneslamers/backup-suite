@@ -6,7 +6,7 @@ BACKUP_DIR="home/forge/default/public/static/"
 WEEK=`date +%V`
 DATE=`date +%Y%m%d%H%M`
 
-echo "backing up files..."
+echo "Backing up files..."
 
 # Backup site dir
 tar czf ${SAVE_DIR}/${BACKUP_NAME}-files-${DATE}.tar -C / ${BACKUP_DIR}
