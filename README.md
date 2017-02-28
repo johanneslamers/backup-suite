@@ -36,11 +36,11 @@ vim .env
 ## Setup backup shell scripts
 Then we can create our backup shell scripts.
 - backup-db.sh: This will export the database, compress it, and upload it to our S3 bucket.
-- backup-file-sh: This will export the files, tarball it, and upload it to our S3 bucket.
+- backup-files.sh: This will export the files, tarball's it, and upload it to our S3 bucket.
 
 ````
 vim backup-db.sh
-vim backup-file.sh
+vim backup-files.sh
 ````
 
 ## Add crontask in Laravel Forge
@@ -52,7 +52,7 @@ Add these commands to the scheduled job. And run as forge user.
 ````
 #### Backup files
 ````
-/usr/bin/env bash /home/forge/backup/backup-file.sh &>> /home/forge/backup/backup-file.log
+/usr/bin/env bash /home/forge/backup/backup-files.sh &>> /home/forge/backup/backup-files.log
 ````
 
 
