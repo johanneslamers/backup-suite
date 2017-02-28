@@ -1,7 +1,7 @@
 Laravel Forge Backup Suite
 =========
 
-Based on https://serversforhackers.com/video/backup-to-s3
+
 
 ## Install AWS CLI
 We'll install the AWS CLI tool using Python PIP, a Python package manager.
@@ -55,7 +55,7 @@ Add these commands to the scheduled job. And run as forge user.
 /usr/bin/env bash /home/forge/backup/backup-files.sh &>> /home/forge/backup/backup-files.log
 ````
 
-
-
 ## Protip:
-Add lifetime retention for you S3 files in your AWS Console. 
+Add Lifecycle for you S3 files in your AWS Console to automatic delete backup after x dates.
+
+> Based on https://serversforhackers.com/video/backup-to-s3
