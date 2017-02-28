@@ -33,6 +33,7 @@ mkdir ~/backup
 cd ~/backup
 vim .env
 ````
+Paste your .env cridentials and close vim with ``ESC`` followed by ``:wq``
 
 ## Setup backup scripts
 Then we can create our backup shell scripts.
@@ -43,7 +44,7 @@ Then we can create our backup shell scripts.
 vim backup-db.sh
 vim backup-files.sh
 ````
-
+Paste your scripts and close vim with ``ESC`` followed by ``:wq``
 Make the scripts executable with chmod and test it.
 
 ````
