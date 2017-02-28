@@ -20,7 +20,7 @@ tar czf ${SAVE_DIR}/${BACKUP_NAME}-${DATE}.tar -C / ${BACKUP_DIR}
 if [ -e ${SAVE_DIR}/${BACKUP_NAME}-${DATE}.tar ]; then
 
     # Upload to AWS
-    aws s3 cp ${SAVE_DIR}/${BACKUP_NAME}-${DATE}.tar s3://${S3_BUCKET}/${CLIENT}/${WEEK}/file/${BACKUP_NAME}-${DATE}.tar
+    aws s3 cp ${SAVE_DIR}/${BACKUP_NAME}-${DATE}.tar s3://${S3_BUCKET}/${CLIENT}/${WEEK}/files/${BACKUP_NAME}-${DATE}.tar
 
     # Test result of last command run
     if [ "$?" -ne "0" ]; then
