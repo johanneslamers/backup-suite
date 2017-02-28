@@ -23,8 +23,8 @@ aws configure
 > YOUR SECRET KEY HERE
 > eu-west-2
 > json
-
 ````
+
 ## Setup backup location
 Then we can the backup folder and the .env file to hold our MySQL database credentials.
 
