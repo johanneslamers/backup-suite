@@ -43,7 +43,7 @@ vim backup-db.sh
 vim backup-file.sh
 ````
 
-## Now add crontask in Laravel Forge
+## Add crontask in Laravel Forge
 Add these commands to the scheduled job. And run as forge user. 
 
 #### Backup database
