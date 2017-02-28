@@ -25,15 +25,15 @@ aws configure
 > json
 ````
 
-## Setup backup location
-Then we can the backup folder and the environment file that holds our MySQL database credentials.
+## Setup backup location and credentials
+Then we can the backup folder and the environment file that holds our credentials.
 
 ````
 mkdir ~/backup
 cd ~/backup
 vim .env
 ````
-Paste your .env cridentials and close vim with ``ESC`` followed by ``:wq``
+Paste your .env credentials and close vim with ``ESC`` followed by ``:wq``
 
 ## Setup backup scripts
 Then we can create our backup shell scripts.
