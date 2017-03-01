@@ -1,7 +1,8 @@
-Backup Suite to AWS S3
+Backup Suite to Amazon AWS S3
 =========
 
 Backup important data, such as database and file dumps, securely to S3, than deletes the local backups for security reasons.
+Amazon S3 can be an interestingly safe and cheap way to store your important data. Some of the most important data in the world is saved in... MySQL, and surely yours is quite important, so you need such a script.
 
 ## Install AWS CLI
 SSH into your server. 
