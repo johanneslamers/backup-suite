@@ -13,7 +13,7 @@
 * Clear folder structure in S3
 
 
-## Features
+## Summary
 You’ve setup your server (for example with Serverpilot or Laravel Forge on Digital Ocean), but have you thought about backups? 
 This script backups important data, such as database and file dumps, uploads it securely to S3, than deletes the local backups for security reasons.
 
