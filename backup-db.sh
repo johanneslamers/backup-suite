@@ -37,6 +37,8 @@ then
     # Temporary db dump path
     BACKUP_DB_PATH=${SAVE_DIR}/${BACKUP_NAME}_${DATE}_${DAY}-${MYSQL_DATABASE}.sql
 
+    echo " "
+    echo " "
     echo "======================================================================"
     echo "Backing up single database: "${MYSQL_DATABASE}
     echo "----------------------------------------------------------------------"
@@ -48,12 +50,15 @@ then
         IGNORED_TABLES_STRING+=" --ignore-table=${MYSQL_DATABASE}.${TABLE}"
     done
 
+    echo " "
     echo "Ignored tables: "${IGNORED_TABLES_STRING}
     echo "----------------------------------------------------------------------"
 
     # dump database to its own sql file
     mysqldump -h${MYSQL_HOST} -P${MYSQL_PORT} -u${MYSQL_USER} -p${MYSQL_PASSWORD} ${MYSQL_DATABASE} --single-transaction --no-data > ${BACKUP_DB_PATH}
     mysqldump -h${MYSQL_HOST} -P${MYSQL_PORT} -u${MYSQL_USER} -p${MYSQL_PASSWORD} ${MYSQL_DATABASE} --no-create-info ${IGNORED_TABLES_STRING} >> ${BACKUP_DB_PATH}
+    
+    echo " "
     echo "Database dumped"
 
     # repair and optimize database
@@ -61,7 +66,8 @@ then
     echo "----------------------------------------------------------------------"
 
 else
-
+    echo " "
+    echo " "
     echo "======================================================================"
     echo "Backing up all available databases"
     echo "----------------------------------------------------------------------"
@@ -81,13 +87,15 @@ else
         do
             IGNORED_TABLES_STRING+=" --ignore-table=${DB}.${TABLE}"
         done
-
+        echo " "
         echo "Ignored tables: "${IGNORED_TABLES_STRING}
         echo "----------------------------------------------------------------------"
 
         # dump each database to its own sql file
         mysqldump -h${MYSQL_HOST} -P${MYSQL_PORT} -u${MYSQL_USER} -p${MYSQL_PASSWORD} ${DB} --single-transaction --no-data > ${BACKUP_DB_PATH}
         mysqldump -h${MYSQL_HOST} -P${MYSQL_PORT} -u${MYSQL_USER} -p${MYSQL_PASSWORD} ${DB} --no-create-info ${IGNORED_TABLES_STRING} >> ${BACKUP_DB_PATH}
+        
+        echo " "
         echo "Database dumped"
 
         # repair and optimize database
