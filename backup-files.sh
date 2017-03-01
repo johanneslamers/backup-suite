@@ -63,6 +63,7 @@ do
             exit 1
         else
             echo "Upload to AWS S3 successful"
+            echo "----------------------------------------------------------------------"
             echo "Removing local backup file"
             # If success, remove backup file
             rm ${SAVE_DIR}/${BACKUP_FILE}
