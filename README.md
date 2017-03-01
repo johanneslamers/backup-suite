@@ -96,6 +96,7 @@ You’re done! Backups will be made daily. You’re done! Backups will be made d
 All your databases and will be stored in ``/var/lib/automysqlbackup``. 
 
 If you like to make manual backup just run ``sudo automysqlbackup``. 
+For more information on installing automysqlbackup go to: [Install automysqlbackup on Ubuntu](https://gist.github.com/janikvonrotz/9488132)
 
 
 # Source
