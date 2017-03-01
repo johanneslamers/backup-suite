@@ -52,6 +52,7 @@ Just create a new user/group that only has access to S3 and use those credential
 
 ````
 # Configure AWS - adding the KEY, SECRET KEY, default zone and default output format
+
 aws configure
 > YOUR KEY HERE
 > YOUR SECRET KEY HERE
