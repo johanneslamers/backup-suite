@@ -1,5 +1,5 @@
-# Amazon S3 Backup Bot
-Relax, it's backed up. Off site, on line, in case.
+# 💎 Amazon S3 Backup Bot 🤖
+**Relax, it's backed up. Off site, on line, in case.**
 
 ## Features
 * All configuration is done in the ``.env`` file, rather than in the scripts themselves. 
