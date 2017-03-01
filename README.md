@@ -1,5 +1,5 @@
-# 💎 Amazon S3 Backup Bot 🤖
-**Relax, it's backed up. Off site, on line, in case.**
+# Amazon S3 Backup Bot 
+**Relax, it's backed up. Off site, on line, in case.** 🤖
 
 ## Features
 * All configuration is done in the ``.env`` file, rather than in the scripts themselves. 
@@ -19,13 +19,13 @@ This script backups important data, such as database and file dumps, uploads it 
 
 Amazon S3 can be an interestingly safe and cheap way to store your important data. Some of the most important data in the world is saved in... MySQL, and surely yours is quite important, so you need such a script.
 
+
+## Folder structure on S3
 Backups are stored in the following directory structure separated by client and week number (10):
 
 **Files:** ``S3://yourbucket/client/10/files/backup_name-20170301-folder.tar.gz``
 
-**Database:** ``S3://yourbucket/client/10/db/backup_name-20170301-db.sql.gz``
-
-All configuration is done in the .env file, rather than in the scripts themselves. 
+**Database:** ``S3://yourbucket/client/10/db/backup_name-20170301-db.tar.gz``
 
 
 
@@ -45,7 +45,12 @@ sudo pip install awscli
 
 # Check to ensure it exists
 which aws
+````
 
+**Tip:** Do NOT configure AWS CLI with your root AWS credentials - yes it will work, but would you store your root server password in a plaintext file? No, and your AWS credentials give the holder access to unlimited resources, your billing details, your machine images, everything.
+Just create a new user/group that only has access to S3 and use those credentials to configure S3. 
+
+````
 # Configure AWS - adding the KEY, SECRET KEY, default zone and default output format
 aws configure
 > YOUR KEY HERE
@@ -54,23 +59,23 @@ aws configure
 > json
 ````
 
-**Tip:** Do NOT configure AWS CLI with your root AWS credentials - yes it will work, but would you store your root server password in a plaintext file? No, and your AWS credentials give the holder access to unlimited resources, your billing details, your machine images, everything.
-Just  create a new user/group that only has access to S3 and use those credentials to configure s3. 
-
 ### 2. Setup backup location and configuration
 Now we create the backup folder and the environment file that holds our credentials.
 
 ````
 mkdir ~/backup
 cd ~/backup
+````
+All configuration is done in the .env file, rather than in the scripts themselves. So don’t forget to add your credentials in the appropriate variables, as well as to modify the paths based on your server and AWS setup. 
+Open .env with vim and paste the .env credentials. 
+
+````
 vim .env
 ````
-Don’t forget to add your credentials in the appropriate variables, as well as to modify the paths based on your server and AWS setup. 
-
-Now paste the .env credentials and close vim with ``ESC`` followed by ``:wq``
+Now close vim with ``ESC`` followed by ``:wq``
 
 ### 3. Setup backup scripts
-Then we can create our backup shell scripts.
+Now we can create our backup shell scripts.
 - backup-db.sh: This will export the database, compress it, and upload it to our S3 bucket.
 - backup-files.sh: This will export the files, tarball's it, and upload it to our S3 bucket.
 
@@ -80,6 +85,7 @@ vim backup-files.sh
 ````
 Paste your scripts and close vim with ``ESC`` followed by ``:wq``
 
+#### 4. Test your scripts
 Make the scripts executable with chmod and test it.
 
 ````
@@ -89,7 +95,7 @@ bash backup-db.sh
 bash backup-files.sh
 ````
 
-### 4. Add cronjob 
+### 5. Add cronjob 
 Add these commands to the scheduled job.
 
 ##### Backup database
