@@ -101,7 +101,7 @@ fi
 echo "======================================================================"
 echo "Compress backup files"
 
-BACKUP_FILE=${BACKUP_NAME}_${DATE}_${DAY}-db.bar.gz
+BACKUP_FILE=${BACKUP_NAME}_${DATE}_${DAY}-db.tar.gz
 
 # tar all the databases with --absolute-names.  don’t strip leading ‘/’s from file names
 tar -czPf ${BACKUP_FILE} *.sql
@@ -132,6 +132,7 @@ then
         exit 1
     else
         echo "Upload to AWS S3 successful"
+        echo "----------------------------------------------------------------------"
         echo "Removing local backup file"
         # If success, remove backup file
         rm ${SAVE_DIR}/${BACKUP_FILE}
