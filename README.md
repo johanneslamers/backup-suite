@@ -87,13 +87,11 @@ Add these commands to the scheduled job.
 Within S3 locate your bucket properties and find the “Lifecycle” option. Then just create a rule and you can delete old backups any number of days after they were created. I created a rule called “Delete Old Backups” that runs on the whole bucket and permanently deletes items created 30 days ago.
 
 
-## Alternative DB backup with AUTOMYSQLBACKUP
-Backup your datasbase with AUTOMYSQLBACKUP. Installation is pretty simple:
+## Alternative DB backup with automysqlbackup
+Backup your datasbase with automysqlbackup. Installation is pretty simple: ``sudo apt-get install automysqlbackup`` 
 
-``sudo apt-get install automysqlbackup`` 
-
-You’re done! Backups will be made daily. You’re done! Backups will be made daily.
-All your databases and will be stored in ``/var/lib/automysqlbackup``. 
+You’re done! Backups will be made daily.
+All your databases will be stored in ``/var/lib/automysqlbackup``. 
 
 If you like to make manual backup just run ``sudo automysqlbackup``. 
 For more information on installing automysqlbackup go to: [Install automysqlbackup on Ubuntu](https://gist.github.com/janikvonrotz/9488132)
@@ -101,3 +99,4 @@ For more information on installing automysqlbackup go to: [Install automysqlback
 
 # Source
 - [Servers for hackers | Backup to S3](https://serversforhackers.com/video/backup-to-s3)
+- [Install automysqlbackup on Ubuntu](https://gist.github.com/janikvonrotz/9488132)
