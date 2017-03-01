@@ -1,11 +1,21 @@
-Backup Suite to Amazon AWS S3
-=========
+# Amazon S3 Backup Bot
+## Relax, it's backed up. Off site, on line, in case.
+
+## Features
+* Loads environment variables from ``.env`` file
+* Uploads the tarred file to S3
+* After upload deletes the tarred files from the local server
+* Dumps each backup folder into its own file
+* Checks, repairs, and optimizes each MySQL database
+* Compress files before upload
+* Detailed information and comments
+* S3 storage class options to cut costs
+
 
 You’ve setup your server (for example with Serverpilot or Laravel Forge on Digital Ocean), but have you thought about backups? 
-This script backups important data, such as database and file dumps, securely to S3, than deletes the local backups for security reasons.
+This script backups important data, such as database and file dumps, uploads it securely to S3, than deletes the local backups for security reasons.
 
 Amazon S3 can be an interestingly safe and cheap way to store your important data. Some of the most important data in the world is saved in... MySQL, and surely yours is quite important, so you need such a script.
-All sensitive information is saved in a ``.env`` file. 
 
 Backups are stored in the following directory structure separated by client and week number (10):
 
@@ -13,8 +23,15 @@ Backups are stored in the following directory structure separated by client and 
 
 **Database:** ``S3://yourbucket/client/10/db/backup_name-20170301-db.sql.gz``
 
-## Install AWS CLI
-SSH into your server. 
+All the configuration variables is stored in ``.env``.
+
+
+
+
+## Getting started
+
+### Install AWS CLI
+Logon your server with SSH
 We'll install the AWS CLI tool using Python PIP, a Python package manager.
 
 ````
@@ -38,7 +55,7 @@ aws configure
 **Tip:** Do NOT configure AWS CLI with your root AWS credentials - yes it will work, but would you store your root server password in a plaintext file? No, and your AWS credentials give the holder access to unlimited resources, your billing details, your machine images, everything.
 Just  create a new user/group that only has access to S3 and use those credentials to configure s3. 
 
-## Setup backup location and credentials
+### Setup backup location and configuration
 Now we create the backup folder and the environment file that holds our credentials.
 
 ````
@@ -50,7 +67,7 @@ Don’t forget to add your credentials in the appropriate variables, as well as 
 
 Now paste the .env credentials and close vim with ``ESC`` followed by ``:wq``
 
-## Setup backup scripts
+### Setup backup scripts
 Then we can create our backup shell scripts.
 - backup-db.sh: This will export the database, compress it, and upload it to our S3 bucket.
 - backup-files.sh: This will export the files, tarball's it, and upload it to our S3 bucket.
@@ -70,7 +87,7 @@ bash backup-db.sh
 bash backup-files.sh
 ````
 
-## Add cronjob 
+### Add cronjob 
 Add these commands to the scheduled job.
 
 #### Backup database
@@ -89,11 +106,10 @@ Within S3 locate your bucket properties and find the “Lifecycle” option. The
 
 ## Alternative DB backup with automysqlbackup
 Backup your datasbase with automysqlbackup. Installation is pretty simple: ``sudo apt-get install automysqlbackup`` 
-
 You’re done! Backups will be made daily.
 All your databases will be stored in ``/var/lib/automysqlbackup``. 
-
 If you like to make manual backup just run ``sudo automysqlbackup``. 
+
 For more information on installing automysqlbackup go to: [Install automysqlbackup on Ubuntu](https://gist.github.com/janikvonrotz/9488132)
 
 
