@@ -1,5 +1,5 @@
 # Amazon S3 Backup Bot
-## Relax, it's backed up. Off site, on line, in case.
+Relax, it's backed up. Off site, on line, in case.
 
 ## Features
 * Loads environment variables from ``.env`` file
