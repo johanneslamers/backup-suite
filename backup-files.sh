@@ -6,6 +6,12 @@ DATE=`date +%Y%m%d%H%M`
 # Get all enviroment cridentials
 source /home/forge/backup/.env
 
+#### END CONFIGURATION ####
+
+# make the temp directory if it doesn't exist and cd into it
+mkdir -p ${SAVE_DIR}
+cd ${SAVE_DIR}
+
 ## Check we can write to the backups directory
 if [ -w "${SAVE_DIR}" ]
 then
@@ -35,7 +41,7 @@ do
     # Upload file to S3
     if [ -e ${BACKUP_FILE} ]; 
     then
-        aws s3 cp ${SAVE_DIR}/${BACKUP_FILE} s3://${S3_BUCKET}/${CLIENT}/${WEEK}/files/${BACKUP_FILE} 2>&1
+        aws s3 cp ${SAVE_DIR}/${BACKUP_FILE} s3://${S3_BUCKET}/${CLIENT}/${WEEK}/files/${BACKUP_FILE} --storage-class "{S3_REDUNDANCY}" 2>&1
         echo " "
 
         # Test result of last command run
