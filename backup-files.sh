@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
-WEEK=`date +%V`
-DATE=`date +%Y%m%d%H%M`
+WEEK=`date +%V` # Week number e.g 38
+MONTH=`date +%B` # Month e.g January
+DATE=`date +%Y-%m-%d_%Hh%Mm` # Date stamp e.g 2017-03-02_23h12m
+DAY=`date +%A` # Day e.g. Monday
 
 # Get all enviroment cridentials
 source /home/forge/backup/.env
@@ -23,6 +25,8 @@ else
     exit
 fi
 
+echo "Backup Start Time `date`"
+echo "======================================================================"
 echo "Backing up files..."
 
 ## Backup of all directories
@@ -30,9 +34,11 @@ echo "Backing up files..."
 for i in "${DIRECTORIES[@]}"
 do
     # Make backup file variable
-    BACKUP_FILE=${BACKUP_NAME}-${DATE}-$(echo $i | sed 's/\//-/g').tar.gz
+    BACKUP_FILE=${BACKUP_NAME}_${DATE}_${DAY}-$(echo $i | sed 's/\//-/g').tar.gz
 
+    echo "======================================================================"
     echo "Backing up "$i" -> "${BACKUP_FILE}
+    echo "----------------------------------------------------------------------"
 
     # Create tarball and compress it
     tar zcf ${SAVE_DIR}/${BACKUP_FILE} -C / $i 2>&1
@@ -41,8 +47,14 @@ do
     # Upload file to S3
     if [ -e ${BACKUP_FILE} ]; 
     then
-        aws s3 cp ${SAVE_DIR}/${BACKUP_FILE} s3://${S3_BUCKET}/${CLIENT}/${WEEK}/files/${BACKUP_FILE} --storage-class "{S3_REDUNDANCY}" 2>&1
-        echo " "
+
+        echo "======================================================================"
+        echo "Uploading to S3"
+        echo "----------------------------------------------------------------------"
+        echo
+
+        # Upload to AWS
+        aws s3 cp ${SAVE_DIR}/${BACKUP_FILE} s3://${S3_BUCKET}/${CLIENT}/${WEEK}/files/${BACKUP_FILE} --storage-class "${S3_REDUNDANCY}"
 
         # Test result of last command run
         if [ "$?" -ne "0" ]; 
@@ -57,6 +69,9 @@ do
             echo "Local backup file "${BACKUP_FILE}" removed"
             echo " "
         fi
+
+        echo "Backup End Time `date`"
+	echo "======================================================================"
     fi
 done
 

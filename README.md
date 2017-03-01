@@ -2,7 +2,7 @@
 **Relax, it's backed up. Off site, on line, in case.** 🤖
 
 ## Features
-* All configuration is done in the ``.env`` file, rather than in the scripts themselves. 
+* All configuration is done in the ``.env`` file, rather than in the scripts themselves
 * Uploads the backups to Amason AWS S3
 * After upload deletes the tarred files from the local server
 * Dumps each backup folder into its own file
@@ -20,12 +20,12 @@ This script backups important data, such as database and file dumps, uploads it 
 Amazon S3 can be an interestingly safe and cheap way to store your important data. Some of the most important data in the world is saved in... MySQL, and surely yours is quite important, so you need such a script.
 
 
-## Folder structure on S3
-Backups are stored in the following directory structure separated by client and week number (10):
+## Folder structure in S3
+Backups are stored in the following directory structure separated by client and week number (10) and type
 
-**Files:** ``S3://yourbucket/client/10/files/backup_name-20170301-folder.tar.gz``
+**Files:** ``S3://yourbucket/client/10/files/backup_name_2017-03-01_10h18m_Wednesday-folder.tar.gz``
 
-**Database:** ``S3://yourbucket/client/10/db/backup_name-20170301-db.tar.gz``
+**Database:** ``S3://yourbucket/client/10/db/backup_name_2017-03-01_10h18m_Wednesday-db.tar.gz``
 
 
 
@@ -87,11 +87,15 @@ vim backup-files.sh
 Paste your scripts and close vim with ``ESC`` followed by ``:wq``
 
 #### 4. Test your scripts
-Make the scripts executable with chmod and test it.
+Make the scripts executable with chmod
 
 ````
 chmod +x backup-db.sh
 chmod +x backup-files.sh
+````
+And test the scripts
+
+````
 bash backup-db.sh
 bash backup-files.sh
 ````
@@ -122,6 +126,6 @@ If you like to make manual backup just run ``sudo automysqlbackup``.
 For more information on installing automysqlbackup go to: [Install automysqlbackup on Ubuntu](https://gist.github.com/janikvonrotz/9488132)
 
 
-# Source
+# Sources
 - [Servers for hackers | Backup to S3](https://serversforhackers.com/video/backup-to-s3)
 - [Install automysqlbackup on Ubuntu](https://gist.github.com/janikvonrotz/9488132)
