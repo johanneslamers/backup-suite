@@ -16,9 +16,7 @@
 ## Summary
 You’ve setup your server (for example with Serverpilot or Laravel Forge on Digital Ocean), but have you thought about backups? 
 This script backups important data, such as database and file dumps, uploads it securely to S3, than deletes the local backups for security reasons.
-
-Amazon S3 can be an interestingly safe and cheap way to store your important data. Some of the most important data in the world is saved in... MySQL, and surely yours is quite important, so you need such a script.
-
+Amazon S3 can be an interestingly safe and cheap way to store your important data. 
 
 ## Folder structure in S3
 Backups are stored in the following directory structure separated by client and week number (10) and type
